@@ -1,13 +1,12 @@
-#!/usr/bin/env node
-// read from file
-
+#!/usr/bin/node
 const fs = require('fs');
-const filename = process.argv[2];
 
-if (filename === undefined) {
-} else {
-  fs.readFile(filename, 'utf8', function (err, data) {
-    if (err) console.log(err);
+const filePath = process.argv[2];
+
+fs.readFile(filePath, 'utf-8', function (err, data) {
+  if (err) {
+    console.log(err);
+  } else {
     console.log(data);
-  });
-}
+  }
+});

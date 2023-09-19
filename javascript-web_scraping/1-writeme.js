@@ -1,14 +1,10 @@
-#!/usr/bin/env node
-// write to file
+#!/usr/bin/node
 
 const fs = require('fs');
 
-const fileName = process.argv[2];
-const fileString = process.argv[3];
+const filePath = process.argv[2];
+const textData = process.argv[3];
 
-if (fileName === undefined || fileString === undefined) {
-} else {
-  fs.writeFile(fileName, fileString, 'utf8', function (err) {
-    if (err) console.log(err);
-  });
-}
+fs.writeFile(filePath, textData, 'utf-8', function (err) {
+  if (err) { console.log(err); }
+});

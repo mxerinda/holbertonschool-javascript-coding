@@ -1,18 +1,18 @@
 #!/usr/bin/node
-// starwars count of id 18
-
 const request = require('request');
-
 const url = process.argv[2];
 
-if (url !== undefined) {
-  request(url, function (err, response, body) {
-    if (err) console.log(err);
-    let allMovies = JSON.parse(body).results;
-    let counter = 0;
-    for (let i = 0; i < allMovies.length; i++) {
-      if (allMovies[i].characters.includes('https://swapi.co/api/people/18/')) counter++;
+request(url, function (err, response, body) {
+  if (err) {
+    console.log(err);
+  }
+  let count = 0;
+  for (const result of JSON.parse(body).results) {
+    for (const wedgeUrl of result.characters) {
+      if (wedgeUrl.includes(18)) {
+        count++;
+      }
     }
-    console.log(counter);
-  });
-}
+  }
+  console.log(count);
+});
